@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculadora23BM_Ucan"
         mc:Ignorable="d"
-        Title="MathUcan" Height="400" Width="300">
+        Title="Calculator" Height="400" Width="300">
     <Window.Resources>
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -1009,19 +1027,20 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="93*"/>
-            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="/2e00976388a9f18f98ee9e55d6a7de21.jpg"/>
+            <ImageBrush ImageSource="/WhatsApp Image 2023-06-18 at 2.08.33 PM.jpeg" Stretch="UniformToFill"/>
         </Grid.Background>
-        <TextBox x:Name="Screen" HorizontalAlignment="Center" 
+        <TextBox x:Name="Screen" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Center" 
                  TextWrapping="Wrap" 
-                 Width="232" 
-                 Height="41" 
+                 Width="248" 
+                 Height="63" 
                  FlowDirection="LeftToRight" 
-                 FontSize="20"
-                 IsReadOnly="True" Margin="0,10,0,0" FontFamily="Arial Black" Text="0" VerticalAlignment="Top" TextAlignment="Right" Foreground="White" 
+                 FontSize="36"
+                 IsReadOnly="True" Margin="0,10,0,0" FontFamily="Arial Black" Text="0" VerticalAlignment="Top" TextAlignment="Right" Foreground="White" Grid.ColumnSpan="2" 
                  >
             <TextBox.BorderBrush>
                 <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
@@ -1033,21 +1052,125 @@
                 </LinearGradientBrush>
             </TextBox.Background>
         </TextBox>
-        <Button Style="{DynamicResource RoudedButtonStyles4}" x:Name="Suma" Content="+" HorizontalAlignment="Left" Margin="226,172,0,0" VerticalAlignment="Top" Height="102" Width="54" FontSize="22" FontWeight="Bold" Background="#FFE5B1B1" Click="ButtonClick" Grid.ColumnSpan="2"/>
-        <Button Style="{DynamicResource RoudedButtonStylesx}" x:Name="Multiplicacion" Content="x" HorizontalAlignment="Left" Margin="225,63,0,0" VerticalAlignment="Top" Height="48" Width="55" FontSize="22" FontWeight="Bold" Background="#FFE5B1B1" Click="ButtonClick" Grid.ColumnSpan="2"/>
-        <Button Style="{DynamicResource RoudedButtonStyles-}" x:Name="Resta" Content="-" HorizontalAlignment="Left" Margin="226,118,0,0" VerticalAlignment="Top" Height="48" Width="54" FontSize="22" FontWeight="Bold" Background="#FFE5B1B1" Click="ButtonClick" Grid.ColumnSpan="2"/>
-        <Button Style="{DynamicResource RoudedButtonStyles7}" x:Name="Siete" Content="7" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Height="47" Width="65" FontSize="22" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStyles8}" x:Name="Ocho" Content="8" HorizontalAlignment="Left" Margin="82,118,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStyles9}" x:Name="Nueve" Content="9" HorizontalAlignment="Left" Margin="153,118,0,0" VerticalAlignment="Top" Height="48" Width="66" RenderTransformOrigin="0.315,0.817" FontSize="22" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStyle4}" x:Name="Cuatro" Content="4" HorizontalAlignment="Left" Margin="9,172,0,0" VerticalAlignment="Top" Height="47" Width="66" FontSize="22" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStyles5}" x:Name="Cinco" Content="5" HorizontalAlignment="Left" Margin="83,172,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStyles6}" x:Name="Seis" Content="6" HorizontalAlignment="Left" Margin="154,172,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStyles1}" x:Name="Uno" Content="1" HorizontalAlignment="Left" Margin="10,226,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStyles2}" x:Name="Dos" Content="2" HorizontalAlignment="Left" Margin="84,226,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStyles3.1}" x:Name="Tres" Content="3" HorizontalAlignment="Left" Margin="155,226,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStyles}" x:Name="Cero" Content="0" HorizontalAlignment="Left" Margin="84,282,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStyles/}" x:Name="Division" Content="÷" HorizontalAlignment="Left" Margin="154,63,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" FontWeight="Bold" Background="#FFE5B1B1" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStyle}" x:Name="Igual" Content="=" Margin="156,281,0,0" VerticalAlignment="Top" Height="48" Background="#FFF03737" HorizontalAlignment="Left" Width="124" Foreground="White" FontSize="24" Click="ButtonClick" Grid.ColumnSpan="2">
+        <Button Style="{DynamicResource RoudedButtonStyles4}" x:Name="Suma" Content="+" HorizontalAlignment="Left" Margin="181,196,0,0" VerticalAlignment="Top" Height="102" Width="54" FontSize="22" FontWeight="Bold" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFFFE700" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStylesx}" x:Name="Multiplicacion" Content="x" HorizontalAlignment="Left" Margin="180,87,0,0" VerticalAlignment="Top" Height="48" Width="55" FontSize="22" FontWeight="Bold" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFFFE700" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyles-}" x:Name="Resta" Content="-" HorizontalAlignment="Left" Margin="181,143,0,0" VerticalAlignment="Top" Height="48" Width="54" FontSize="22" FontWeight="Bold" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFFFF100" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyles7}" x:Name="Siete" Content="7" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" Height="48" Width="64" FontSize="22" Click="ButtonClick" Grid.ColumnSpan="2">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyles8}" x:Name="Ocho" Content="8" HorizontalAlignment="Left" Margin="37,142,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyles9}" x:Name="Nueve" Content="9" HorizontalAlignment="Left" Margin="111,142,0,0" VerticalAlignment="Top" Height="48" Width="66" RenderTransformOrigin="0.315,0.817" FontSize="22" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyle4}" x:Name="Cuatro" Content="4" HorizontalAlignment="Left" Margin="9,196,0,0" VerticalAlignment="Top" Height="47" Width="66" FontSize="22" Click="ButtonClick" Grid.ColumnSpan="2">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyles5}" x:Name="Cinco" Content="5" HorizontalAlignment="Left" Margin="38,195,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyles6}" x:Name="Seis" Content="6" HorizontalAlignment="Left" Margin="111,195,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyles1}" x:Name="Uno" Content="1" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick" Grid.ColumnSpan="2">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyles2}" x:Name="Dos" Content="2" HorizontalAlignment="Left" Margin="37,250,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyles3.1}" x:Name="Tres" Content="3" HorizontalAlignment="Left" Margin="111,250,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyles}" x:Name="Cero" Content="0" HorizontalAlignment="Left" Margin="9,306,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick" Grid.ColumnSpan="2">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyles/}" x:Name="Division" Content="÷" HorizontalAlignment="Left" Margin="111,87,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" FontWeight="Bold" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFF1FF00" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStyle}" x:Name="Igual" Content="=" Margin="111,306,0,0" VerticalAlignment="Top" Height="48" HorizontalAlignment="Left" Width="124" Foreground="White" FontSize="24" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF24FF00" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
             <Button.BorderBrush>
                 <RadialGradientBrush>
                     <GradientStop Color="Black" Offset="1"/>
@@ -1055,8 +1178,22 @@
                 </RadialGradientBrush>
             </Button.BorderBrush>
         </Button>
-        <Button Style="{DynamicResource RoudedButtonStyles3}" x:Name="Punto" Content="." HorizontalAlignment="Left" Margin="10,282,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick"/>
-        <Button Style="{DynamicResource RoudedButtonStylesAC}" x:Name="AC" Content="AC" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Height="48" Width="138" FontSize="22" FontWeight="Bold" Background="#FF393378" Click="ButtonClick"/>
+        <Button Style="{DynamicResource RoudedButtonStyles3}" x:Name="Punto" Content="." HorizontalAlignment="Left" Margin="38,306,0,0" VerticalAlignment="Top" Height="48" Width="66" FontSize="22" Click="ButtonClick" Grid.Column="1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStylesAC}" x:Name="AC" Content="AC" HorizontalAlignment="Left" Margin="11,87,0,0" VerticalAlignment="Top" Height="48" Width="138" FontSize="22" FontWeight="Bold" Click="ButtonClick" Grid.ColumnSpan="2">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFFF0404" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
 
 
     </Grid>
