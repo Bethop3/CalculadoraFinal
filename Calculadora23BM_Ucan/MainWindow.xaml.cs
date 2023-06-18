@@ -28,10 +28,11 @@ namespace Calculadora23BM_Ucan
         }
         public void ButtonClick(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
                 Button button = (Button)sender;
                 string value = (string)button.Content;
-                
+
                 if (IsNumber(value))
                 {
                     HadleNumber(value);
@@ -42,9 +43,16 @@ namespace Calculadora23BM_Ucan
                 }
                 if (EsResultado(value))
                 {
-                    Resultado(Screen.Text);    
+                    Resultado(Screen.Text);
                 }
-            
+                if (value == "AC")
+                {
+                    Screen.Text = "0";
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show (ex.Message);
+            }
            
         }
 
