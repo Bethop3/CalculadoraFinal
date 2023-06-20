@@ -49,6 +49,16 @@ namespace Calculadora23BM_Ucan
                 {
                     Screen.Text = "0";
                 }
+                
+                if (value == "←")
+                {
+                    try
+                    {
+                        Screen.Text = Screen.Text.Remove(Screen.Text.Length - 1); ;
+                    }
+                    catch { }
+                }
+                
             }catch (Exception ex)
             {
                 MessageBox.Show (ex.Message);
