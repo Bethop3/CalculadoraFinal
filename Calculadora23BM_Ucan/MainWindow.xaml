@@ -1186,7 +1186,15 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button Style="{DynamicResource RoudedButtonStylesAC}" x:Name="AC" Content="AC" HorizontalAlignment="Left" Margin="11,87,0,0" VerticalAlignment="Top" Height="48" Width="138" FontSize="22" FontWeight="Bold" Click="ButtonClick" Grid.ColumnSpan="2">
+        <Button Style="{DynamicResource RoudedButtonStylesAC}" x:Name="AC" Content="AC" HorizontalAlignment="Left" Margin="11,87,0,0" VerticalAlignment="Top" Height="48" Width="63" FontSize="22" FontWeight="Bold" Click="ButtonClick" Grid.ColumnSpan="2">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFFF0404" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Style="{DynamicResource RoudedButtonStylesAC}" x:Name="AC_Copy" Content="←" HorizontalAlignment="Left" Margin="39,87,0,0" VerticalAlignment="Top" Height="48" Width="62" FontSize="36" Click="ButtonClick" Grid.Column="1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
