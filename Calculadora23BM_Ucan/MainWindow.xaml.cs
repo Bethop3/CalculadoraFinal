@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,7 +34,10 @@ namespace Calculadora23BM_Ucan
             {
                 Button button = (Button)sender;
                 string value = (string)button.Content;
-
+                if (EsResultado(value))
+                {
+                    Resultado(Screen.Text);
+                }
                 if (IsNumber(value))
                 {
                     HadleNumber(value);
@@ -40,11 +45,7 @@ namespace Calculadora23BM_Ucan
                 else if (IsOperador(value))
                 {
                     HandleOperador(value);
-                }
-                if (EsResultado(value))
-                {
-                    Resultado(Screen.Text);
-                }
+                }    
                 if (value == "AC")
                 {
                     Screen.Text = "0";
@@ -61,7 +62,7 @@ namespace Calculadora23BM_Ucan
                 
             }catch (Exception ex)
             {
-                MessageBox.Show (ex.Message);
+                
             }
            
         }
@@ -81,7 +82,6 @@ namespace Calculadora23BM_Ucan
         }
         public bool EsResultado (string posible)
         {
-
             return posible == "=";
         }
         private void HadleNumber(string value)
@@ -136,37 +136,49 @@ namespace Calculadora23BM_Ucan
         }
         public void Resultado (string resultado)
         {
-            string[] operadores = { "+", "-", "x", "÷" };
-            foreach (string operador in operadores)
+            char[] operadores = { '+', '÷', 'x','-' };
+            foreach (char operador in operadores)
             {
+                
+                int cantidad = resultado.Count(c => c == operador);
+                if (cantidad == 2)
+                {
+                    string[] elementos = resultado.Split(operador);
+                    string var = elementos[1].TrimStart('-');
+                    string var2 = elementos[2].TrimStart('-');
+                    double vall1 = double.Parse(var), vall2 = double.Parse(var2);
+                    double res = (vall1 + vall2)*-1;
+                    Screen.Text = res.ToString();
+                }
                 if (resultado.Contains(operador))
                 {
                     string[] Suma = resultado.Split(operador);
                         string valor1 = Suma[0];
                         string valor2 = Suma[1];
+   
                     if (valor2 != "")
                     {
                         double val1 = double.Parse(valor1), val2 = double.Parse(valor2), resulta;
                         switch (operador)
                         {
-                            case "+":
+                            case '+':
                                 resulta = val1 + val2;
                                 Screen.Text = resulta.ToString();
                                 break;
-                            case "-":
+                            case '-':
                                 resulta = val1 - val2;
                                 Screen.Text = resulta.ToString();
                                 break;
-                            case "x":
+                            case 'x':
                                 resulta = val1 * val2;
                                 Screen.Text = resulta.ToString();
                                 break;
-                            case "÷":
+                            case '÷':
                                 resulta = val1 / val2;
                                 Screen.Text = resulta.ToString();
                                 break;
                             default:
-                                MessageBox.Show("Ingrese una operacion valida");
+                                MessageBox.Show("Ingresa una opcion valida");
                                 break;
                         }
                     }
@@ -174,11 +186,11 @@ namespace Calculadora23BM_Ucan
                     {
                         MessageBox.Show("Ingrese dos valores para poder realizar la operacion");
                     }
+                    
                 }
+               
             }
             
         }
-        
-
     }
 }
